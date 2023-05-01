@@ -20,22 +20,45 @@ public int getUserInput(String text){
 
 public ArrayList<String> placeShip(int shipSize) {
 	//holds index to grid (0 - 48)
-	int[] shipCoordinates = new int[shipSize];
+	int[] shipCoordinates = new int[shipSize];			//current candidate coords
 	int attempts = 0;
 	boolean success = false;
 
 	shipCount++;
-	int increment = getIncrement();
+	int increment = getIncrement();					//alternate vertical&horizontal align
 
-	while(!success & attempts++ < MAX_ATTEMPTS) {
-		int location = random.nextInt(GRID_SIZE);
+	while(!success & attempts++ < MAX_ATTEMPTS) {			// MAIN SEARCH LOOP
+		int location = random.nextInt(GRID_SIZE);			//get random start point
 
-		for(int i = 0; i < shipCoordinates.length; i++) {
-			shipCoordinates[i] = location;
-			location += increment;
+		for(int i = 0; i < shipCoordinates.length; i++) {	//create arr of proposed coords
+			shipCoordinates[i] = location;			//put current loc in array
+			location += increment;					//calc next location
 		}
+		System.out.println("Trying: " + Arrays.toString(shipCoordinates));
+		
+		if( ) {
+
+		}
+
 	}
 }
 
+private int getIncrement() {
+	if(shipCount % 2 == 0) {			// if an even ship
+		return HORIZONTAL_INCREMENT;		//place horizontally
+	} else {						//else odd ship
+		return VERTICAL_INCREMENT;		//place vertically
+	}
+}
+
+private boolean startupShip(int[] shipCoords, int increment) {
+	int finalLocation = shipCoords[shipCoords.length - 1];
+	if(increment == HORIZONTAL_INCREMENT) {
+		//check end is on same row as start
+		
+				
+	}
+
+}
 
 }

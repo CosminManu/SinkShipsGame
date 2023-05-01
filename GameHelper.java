@@ -51,14 +51,24 @@ private int getIncrement() {
 	}
 }
 
-private boolean startupShip(int[] shipCoords, int increment) {
+private boolean shipFits(int[] shipCoords, int increment) {
 	int finalLocation = shipCoords[shipCoords.length - 1];
 	if(increment == HORIZONTAL_INCREMENT) {
 		//check end is on same row as start
-		
-				
+		return calcRowFromIndex(startupCoords[0] == calcRowFromIndex(finalLocation);
+	} else {
+		return finalLocation < GRID_SIZE;		//check end isn't off the bottom
 	}
+}
 
+private boolean coordsAvailable(int[] shipCoords) {
+	for(int coord : shipCoords){			// check all potential positions
+		if(grid[coord] != 0){			//this position already taken
+			System.out.println("position: " + coord + " already taken.");
+			return false;
+		}
+	}
+	return true;		// no clashes
 }
 
 }

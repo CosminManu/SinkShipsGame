@@ -81,7 +81,15 @@ private void savePositionToGrid(int[] shipCoords) {
 	for(int index : shipCoords) {
 		grid[index] = 1;				//mark grid position as used'' 
 	}
+}
 
+private ArrayList<String> convertCoordsToAlphaFormat(int[] shipCoords) {
+	ArrayList<String> alphaCells = new ArrayList<String>();
+	for(int index : shipCoords) {						// for each grid coordinate
+		String alphaCoords = getAlphaFromIndex(index);		//turn it in a 'a0' style
+		alphaCells.add(alphaCoords);					//add to a list
+	}
+	return alphaCells;
 }
 
 }

@@ -36,11 +36,17 @@ public ArrayList<String> placeShip(int shipSize) {
 		}
 		System.out.println("Trying: " + Arrays.toString(shipCoordinates));
 		
-		if( ) {
-
+		if(shipFits(shipCoordinates, increment)) {		//if ship fits on the grid
+			success = coordsAvailable(shipCoordinates);
 		}
 
 	}
+	savePositionToGrid(shpiCoordinates);	// coordinates passed checks, save
+	ArrayList<String> alphaCells = convertCoordsToAlphaFormat(shipCoordinates);
+
+	System.out.println("Placed at: " + alphaCells);
+	return alphaCells;
+
 }
 
 private int getIncrement() {
@@ -69,6 +75,13 @@ private boolean coordsAvailable(int[] shipCoords) {
 		}
 	}
 	return true;		// no clashes
+}
+
+private void savePositionToGrid(int[] shipCoords) {
+	for(int index : shipCoords) {
+		grid[index] = 1;				//mark grid position as used'' 
+	}
+
 }
 
 }

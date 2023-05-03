@@ -12,7 +12,7 @@ private final int[] grid = new int[GRID_SIZE];
 private final Random random = new Random();
 private int shipCount = 0;
 
-public int getUserInput(String text){
+public String getUserInput(String text){
 	System.out.print(text + ": ");
 	Scanner sc = new Scanner(System.in);
 	return sc.nextLine().toLowerCase();
@@ -41,7 +41,7 @@ public ArrayList<String> placeShip(int shipSize) {
 		}
 
 	}
-	savePositionToGrid(shpiCoordinates);	// coordinates passed checks, save
+	savePositionToGrid(shipCoordinates);	// coordinates passed checks, save
 	ArrayList<String> alphaCells = convertCoordsToAlphaFormat(shipCoordinates);
 
 	System.out.println("Placed at: " + alphaCells);
@@ -61,7 +61,7 @@ private boolean shipFits(int[] shipCoords, int increment) {
 	int finalLocation = shipCoords[shipCoords.length - 1];
 	if(increment == HORIZONTAL_INCREMENT) {
 		//check end is on same row as start
-		return calcRowFromIndex(startupCoords[0] == calcRowFromIndex(finalLocation);
+		return calcRowFromIndex(shipCoords[0]) == calcRowFromIndex(finalLocation);
 	} else {
 		return finalLocation < GRID_SIZE;		//check end isn't off the bottom
 	}
@@ -92,4 +92,17 @@ private ArrayList<String> convertCoordsToAlphaFormat(int[] shipCoords) {
 	return alphaCells;
 }
 
+private String getAlphaFromIndex(int index){
+	int row = calcRowFromIndex(index);			//get row val
+	int column = index % GRID_LENGTH;			//get numeric comlumn value
+
+	String letter = ALPHABET.substring(column, column + 1);	//convert to letter
+	return letter + row;
 }
+
+private int calcRowFromIndex(int index){
+	return index / GRID_LENGTH;
+}
+
+
+}//end class

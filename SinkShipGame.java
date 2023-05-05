@@ -6,7 +6,9 @@ public class SinkShipGame {
 	private int numOfGuesses = 0;
 
 	public static void main(String[] args){
-
+		SinkShipGame game = new SinkShipGame();
+		game.setUpGame();
+		game.startPlaying();
 	}
 
 	private void setUpGame() {
@@ -16,7 +18,7 @@ public class SinkShipGame {
 		Ship s2 = new Ship();
 		s2.setName("Pescarusul Bine-Crescut");
 		Ship s3 = new Ship();
-		s3.setName("HH Pierre Laba Trista");
+		s3.setName("HH Pierre Tristul");
 
 		ships.add(s1);
 		ships.add(s2);
@@ -33,7 +35,7 @@ public class SinkShipGame {
 	}//setUpGame
 		
 	private void startPlaying() {
-		while(!ships.isEmpty()) {
+		while(!ships.isEmpty()) {	// <=> while ships list is not empty
 			String userGuess = helper.getUserInput("Enter a guess: ");
 			checkUserGuess(userGuess);
 		}
@@ -56,11 +58,16 @@ public class SinkShipGame {
 			}
 		}
 
-		Sytem.out.println(result);
+		System.out.println(result);
 	}
 
 	private void finishGame(){
-
+		System.out.println("All ships are on the bottom of the ocean!");
+		if(numOfGuesses < 12) {
+			System.out.println("It took you only" + numOfGuesses + " guesses.");
+		} else {
+			System.out.println("Took you long enough. " + numOfGuesses + " guesses.");
+		}
 	}
 
 

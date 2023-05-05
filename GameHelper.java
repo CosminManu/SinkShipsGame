@@ -18,9 +18,9 @@ public String getUserInput(String text){
 	return sc.nextLine().toLowerCase();
 }
 
-public ArrayList<String> placeShip(int shipSize) {
+public ArrayList<String> placeShip(int shipsSize) {
 	//holds index to grid (0 - 48)
-	int[] shipCoordinates = new int[shipSize];			//current candidate coords
+	int[] shipCoordinates = new int[shipsSize];			//current candidate coords
 	int attempts = 0;
 	boolean success = false;
 

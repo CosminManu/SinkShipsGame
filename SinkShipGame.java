@@ -24,8 +24,8 @@ public class SinkShipGame {
 		ships.add(s2);
 		ships.add(s3);
 
-		System.out.println("Your goal is to sink three Ships");
-		System.out.println(s1.getName + ", " + s2.getName() + " and " + s3.getName());
+		System.out.println("Your goal is to sink three Ships:");
+		System.out.println(s1.getName() + ", " + s2.getName() + " and " + s3.getName());
 		System.out.println("Try to sink them all in the fewest number of guesses.");
 
 		for(Ship s : ships) {
@@ -36,14 +36,14 @@ public class SinkShipGame {
 		
 	private void startPlaying() {
 		while(!ships.isEmpty()) {	// <=> while ships list is not empty
-			String userGuess = helper.getUserInput("Enter a guess: ");
+			String userGuess = helper.getUserInput("Enter a guess");
 			checkUserGuess(userGuess);
 		}
 		finishGame();
 	}
 
 	private void checkUserGuess(String userGuess){
-		numGuesses++;		
+		numOfGuesses++;		
 		String result = "miss";
 
 		for(Ship s : ships) {
@@ -53,6 +53,7 @@ public class SinkShipGame {
 				break;
 			}
 			if(result.equals("kill")){
+				System.out.println("Wow! " + s.getName() + " was sunk!");
 				ships.remove(s);
 				break;
 			}
@@ -64,7 +65,7 @@ public class SinkShipGame {
 	private void finishGame(){
 		System.out.println("All ships are on the bottom of the ocean!");
 		if(numOfGuesses < 12) {
-			System.out.println("It took you only" + numOfGuesses + " guesses.");
+			System.out.println("It took you only " + numOfGuesses + " guesses.");
 		} else {
 			System.out.println("Took you long enough. " + numOfGuesses + " guesses.");
 		}
